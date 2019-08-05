@@ -190,36 +190,6 @@ describe('settingsSagas', () => {
     })
   })
 
-  describe('updateLanguage', () => {
-    let { updateLanguage } = settingsSagas({ coreSagas })
-
-    let action = { payload: { language: 'ES' } }
-
-    let saga = testSaga(updateLanguage, action)
-
-    it('should call setLanguage', () => {
-      saga.next().call(coreSagas.settings.setLanguage, action.payload)
-    })
-
-    it('should add the language to the url', () => {
-      saga.next()
-      expect(contains(action.payload.language, window.location.href)).toBe(true)
-    })
-
-    describe('error handling', () => {
-      const error = new Error('ERROR')
-      it('should log the error', () => {
-        saga
-          .restart()
-          .next()
-          .throw(error)
-          .put(
-            actions.logs.logErrorMessage(logLocation, 'updateLanguage', error)
-          )
-      })
-    })
-  })
-
   describe('updateCurrency', () => {
     let { updateCurrency } = settingsSagas({ coreSagas })
 

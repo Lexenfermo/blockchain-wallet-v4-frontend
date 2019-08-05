@@ -93,12 +93,9 @@ const FirstStep = props => {
   const amountActive = activeField === 'amount'
   const isFromLockbox = from && from.type === 'LOCKBOX'
   const browser = Bowser.getParser(window.navigator.userAgent)
-  const isBrowserSupported = browser.satisfies({
-    chrome: '>45',
-    chromium: '>45',
-    firefox: '>45',
-    opera: '>20'
-  })
+  const isBrowserSupported = browser.satisfies(
+    model.components.lockbox.supportedBrowsers
+  )
   const disableLockboxSend = isFromLockbox && !isBrowserSupported
 
   return (
@@ -236,11 +233,14 @@ const FirstStep = props => {
               </MemoField>
             </FormItem>
             {isDestinationExchange && (
-              <WarningBanners type='info' data-e2e='sendXlmToExchangeAddress'>
+              <WarningBanners
+                type='warning'
+                data-e2e='sendXlmToExchangeAddress'
+              >
                 <Text color='warning' size='12px'>
                   <FormattedMessage
-                    id='modals.sendxlm.firststep.sendtoexchange'
-                    defaultMessage='Sending XLM to an exchange often requires adding a memo. Be sure to add a memo if required.'
+                    id='modals.sendxlm.firststep.sendtoexchange2'
+                    defaultMessage='Sending XLM to an exchange often requires adding a memo. Failing to include a required memo may result in a loss of funds!'
                   />
                   <Link
                     href='https://support.blockchain.com/hc/en-us/articles/360018797312-Stellar-memos'
@@ -248,6 +248,7 @@ const FirstStep = props => {
                     size='11px'
                     weight={700}
                     altFont
+                    color='red'
                   >
                     <FormattedMessage
                       id='modals.sendxlm.firststep.sendtoexchangelearn'

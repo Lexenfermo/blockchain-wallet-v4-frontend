@@ -596,19 +596,6 @@
   {
     "descriptors": [
       {
-        "defaultMessage": "Complete your identity verification to claim your XLM.",
-        "id": "layouts.wallet.header.announcements.sunriverkycremdinder.title"
-      },
-      {
-        "defaultMessage": "Complete Now",
-        "id": "layouts.wallet.header.announcements.sunriverkycremdinder.completenow"
-      }
-    ],
-    "path": "src/components/Announcements/Static/template.sunriver.json"
-  },
-  {
-    "descriptors": [
-      {
         "defaultMessage": "Click here to add {coin} to your Lockbox",
         "id": "components.balances.savecointolockbox"
       },
@@ -696,15 +683,15 @@
       },
       {
         "defaultMessage": "Unfortunately this email is being used for another account.",
-        "id": "coinifyexchangedata.create.accept.error1"
+        "id": "coinifyexchangedata.create.accept.err1"
       },
       {
         "defaultMessage": "Click here",
-        "id": "coinifyexchangedata.create.accept.error2"
+        "id": "coinifyexchangedata.create.accept.err2"
       },
       {
         "defaultMessage": "to change it.",
-        "id": "coinifyexchangedata.create.accept.error3"
+        "id": "coinifyexchangedata.create.accept.err3"
       },
       {
         "defaultMessage": "We're sorry, but something unexpected went wrong. Please",
@@ -736,28 +723,11 @@
         "id": "coinifyexchangedata.create.header.createaccount"
       },
       {
-        "defaultMessage": "To get started, create and verify your account in a matter of minutes. We'll need your email, personal info and ID",
-        "id": "coinifyexchangedata.create.subheader.getstartedverify"
+        "defaultMessage": "To get started, create and verify your account in a matter of minutes. We'll need a verified email to start with.",
+        "id": "coinifyexchangedata.create.subheader.getstartedverifyemail"
       }
     ],
     "path": "src/components/BuySell/Coinify/Create/template.json"
-  },
-  {
-    "descriptors": [
-      {
-        "defaultMessage": "Enter the email address you'd like to verify:",
-        "id": "coinifyexchangedata.create.verifyemail.enteremail.youwouldlike"
-      },
-      {
-        "defaultMessage": "Send Verification Email",
-        "id": "coinifyexchangedata.create.verifyemail.sendverifyemail"
-      },
-      {
-        "defaultMessage": "Another verification email has been sent! Don't see it? {resend}",
-        "id": "coinifyexchangedata.create.verifyemail.helper.sentverificationemail"
-      }
-    ],
-    "path": "src/components/BuySell/Coinify/Create/VerifyEmail/template.json"
   },
   {
     "descriptors": [
@@ -809,10 +779,6 @@
       {
         "defaultMessage": "3% convenience fee",
         "id": "coinifyexchangedata.payment.mediumhelpers.card.detail2"
-      },
-      {
-        "defaultMessage": "Visa or Mastercard",
-        "id": "coinifyexchangedata.payment.mediumhelpers.card.detail3"
       },
       {
         "defaultMessage": "Bank Transfer",
@@ -1891,8 +1857,8 @@
         "id": "components.txlistitem.rbf"
       },
       {
-        "defaultMessage": "PAX Fee",
-        "id": "components.txlistitem.feepax"
+        "defaultMessage": "USD Pax Fee",
+        "id": "components.txlistitem.paxfee"
       },
       {
         "defaultMessage": "Description",
@@ -1921,13 +1887,22 @@
       {
         "defaultMessage": "Status",
         "id": "components.txlistitem.status"
-      },
-      {
-        "defaultMessage": "Transaction Fee",
-        "id": "scenes.transactions.bitcoin.content.pages.listitem.fee.label"
       }
     ],
     "path": "src/components/TransactionListItem/template.json"
+  },
+  {
+    "descriptors": [
+      {
+        "defaultMessage": "Transaction Fee",
+        "id": "scenes.transactions.bitcoin.content.pages.listitem.fee.label"
+      },
+      {
+        "defaultMessage": "Failed to retrieve fee!",
+        "id": "scenes.transactions.bitcoin.content.pages.listitem.fee.error"
+      }
+    ],
+    "path": "src/components/TransactionListItem/TransactionFee/index.json"
   },
   {
     "descriptors": [
@@ -1974,40 +1949,53 @@
   {
     "descriptors": [
       {
-        "defaultMessage": "Sign Out",
-        "id": "layouts.wallet.header.signout"
+        "defaultMessage": "Security Center",
+        "id": "layouts.wallet.header.seccenter"
       }
     ],
-    "path": "src/layouts/Wallet/Header/Logout/template.json"
+    "path": "src/layouts/Wallet/Header/SecurityCenter/index.json"
   },
   {
     "descriptors": [
       {
-        "defaultMessage": "Security Center",
-        "id": "layouts.wallet.menuleft.footer.securitycenter"
-      },
-      {
         "defaultMessage": "Settings",
-        "id": "layouts.wallet.menuleft.footer.settings"
+        "id": "layouts.wallet.header.settings"
       },
       {
         "defaultMessage": "General",
-        "id": "layouts.wallet.menuleft.footer.general"
+        "id": "layouts.wallet.header.general"
       },
       {
         "defaultMessage": "Profile",
-        "id": "layouts.wallet.menuleft.footer.profile"
+        "id": "layouts.wallet.header.profile"
       },
       {
         "defaultMessage": "Preferences",
-        "id": "layouts.wallet.menuleft.footer.preferences"
+        "id": "layouts.wallet.header.preferences"
       },
       {
         "defaultMessage": "Wallets & Addresses",
-        "id": "layouts.wallet.menuleft.footer.addresses"
+        "id": "layouts.wallet.header.walletsaddresses"
+      },
+      {
+        "defaultMessage": "Sign Out",
+        "id": "layouts.wallet.header.Sign Out"
       }
     ],
-    "path": "src/layouts/Wallet/MenuLeft/Footer/template.json"
+    "path": "src/layouts/Wallet/Header/Settings/template.json"
+  },
+  {
+    "descriptors": [
+      {
+        "defaultMessage": "Ad by bitcoin.com",
+        "id": "layouts.wallet.menuleft.footer.ad"
+      },
+      {
+        "defaultMessage": "<span>Bitcoin Games.</span> <span>Play Now</span>",
+        "id": "layouts.wallet.menuleft.footer.bitcoingames2"
+      }
+    ],
+    "path": "src/layouts/Wallet/MenuLeft/Footer/index.json"
   },
   {
     "descriptors": [
@@ -2028,16 +2016,16 @@
         "id": "layouts.wallet.menuleft.navigation.trade"
       },
       {
-        "defaultMessage": "New",
-        "id": "layouts.wallet.menuleft.navigation.transactions.new"
-      },
-      {
         "defaultMessage": "Hardware",
         "id": "layouts.wallet.menuleft.navigation.hardware"
       },
       {
-        "defaultMessage": "{deviceName}",
-        "id": "layouts.wallet.menuleft.navigation.lockbox.device"
+        "defaultMessage": "New",
+        "id": "layouts.wallet.menuleft.navigation.transactions.new"
+      },
+      {
+        "defaultMessage": "The PIT",
+        "id": "layouts.wallet.menuleft.navigation.thepit"
       }
     ],
     "path": "src/layouts/Wallet/MenuLeft/Navigation/template.json"
@@ -3639,6 +3627,23 @@
   {
     "descriptors": [
       {
+        "defaultMessage": "Buy with Cards",
+        "id": "modals.coinifybuyviacard.title2"
+      },
+      {
+        "defaultMessage": "Introducing buy Bitcoin with cards within your Wallet. Buying & selling with bank is temporarily unavailable.",
+        "id": "modals.coinifybuyviacard.intro2"
+      },
+      {
+        "defaultMessage": "Buy Now",
+        "id": "modals.coinifybuyviacard.buynow"
+      }
+    ],
+    "path": "src/modals/Coinify/CoinifyBuyViaCard/index.json"
+  },
+  {
+    "descriptors": [
+      {
         "defaultMessage": "Delete bank Account?",
         "id": "modals.coinifydeletebank.title"
       },
@@ -4350,8 +4355,8 @@
         "id": "identityverification.personal.label.state"
       },
       {
-        "defaultMessage": "Unfortunately Swap is not available in your state at this time.",
-        "id": "identityverification.personal.unavailable_swap"
+        "defaultMessage": "Unfortunately this feature is not available in your state at this time.",
+        "id": "identityverification.personal.unavailable"
       },
       {
         "defaultMessage": "We will notify you when we expand to your area.",
@@ -5524,20 +5529,20 @@
   {
     "descriptors": [
       {
-        "defaultMessage": "Claim Your Airdrop",
-        "id": "modals.airdropclaim.claimairdrop"
+        "defaultMessage": "Airdrop Program",
+        "id": "modals.airdropclaim.airdropprogram"
       },
       {
-        "defaultMessage": "Thanks for claiming your airdrop. You should be receiving your {coinName} ({coinCode}) soon!",
-        "id": "modals.airdropclaim.thanksforparticipating"
+        "defaultMessage": "Thanks for already joining our Airdrop Program. If you are eligible you should be receiving your {coinName} ({coinCode}) soon!",
+        "id": "modals.airdropclaim.thanksforparticipatingairdropprogram"
       },
       {
         "defaultMessage": "You’re eligible for our airdrop program. Click the button to join our Airdrop Program.",
-        "id": "modals.airdropclaim.completeprofilefree"
+        "id": "modals.airdropclaim.clicktojoinairdropprogram"
       },
       {
-        "defaultMessage": "Claim My Free Airdrop",
-        "id": "modals.airdropclaim.claimairdropnow"
+        "defaultMessage": "Join Airdrop Program",
+        "id": "modals.airdropclaim.joinairdropnow"
       }
     ],
     "path": "src/modals/Onboarding/AirdropClaim/index.json"
@@ -5545,8 +5550,8 @@
   {
     "descriptors": [
       {
-        "defaultMessage": "Your {coinCode} is on its way!",
-        "id": "modals.airdropsuccess.airdroponitsway"
+        "defaultMessage": "Enrolled in Airdrop Program!",
+        "id": "modals.airdropsuccess.airdropprogram"
       },
       {
         "defaultMessage": "Share the wealth with friends and family. Literally.",
@@ -5588,30 +5593,162 @@
     "descriptors": [
       {
         "defaultMessage": "Success!",
-        "id": "modals.onboarding.linkaccount.successheader"
+        "id": "modals.onboarding.linkfrompitaccount.successheader"
       },
       {
-        "defaultMessage": "You have connected your Blockchain Wallet to The Pit. Go back and finish signing up!",
-        "id": "modals.onboarding.linkaccount.success"
+        "defaultMessage": "You have connected your Blockchain Wallet to The PIT. Go back and finish signing up!",
+        "id": "modals.onboarding.linkfrompitaccount.success"
       },
       {
         "defaultMessage": "Done",
-        "id": "modals.onboarding.linkaccount.successdone"
+        "id": "modals.onboarding.linkfrompitaccount.successdone"
       },
       {
         "defaultMessage": "Connection Error",
-        "id": "modals.onboarding.linkaccount.failureheader"
+        "id": "modals.onboarding.linkfrompitaccount.failureheader"
       },
       {
-        "defaultMessage": "We could not connect your Wallet to The Pit. Please go back to The Pit and try again.",
-        "id": "modals.onboarding.linkaccount.failure"
+        "defaultMessage": "We could not connect your Wallet to The PIT. Please go back to The PIT and try again.",
+        "id": "modals.onboarding.linkfrompitaccount.failure"
       },
       {
         "defaultMessage": "Done",
-        "id": "modals.onboarding.linkaccount.failuredone"
+        "id": "modals.onboarding.linkfrompitaccount.failuredone"
+      },
+      {
+        "defaultMessage": "Please Verify Email",
+        "id": "modals.onboarding.linkfrompitaccount.unverified_email"
+      },
+      {
+        "defaultMessage": "Check your inbox. We sent an email to:",
+        "id": "modals.onboarding.linkfrompitaccount.check_inbox"
+      },
+      {
+        "defaultMessage": "You do not have an email associated with this wallet. Please to Security Center to set your email.",
+        "id": "modals.onboarding.linkfrompitaccount.no_email"
+      },
+      {
+        "defaultMessage": "Resend Email",
+        "id": "modals.onboarding.linkfrompitaccount.send_email"
       }
     ],
-    "path": "src/modals/Onboarding/LinkAccount/template.json"
+    "path": "src/modals/Onboarding/LinkFromPitAccount/template.json"
+  },
+  {
+    "descriptors": [
+      {
+        "defaultMessage": "Linking Error",
+        "id": "modals.onboarding.linktopitaccount.error.title"
+      },
+      {
+        "defaultMessage": "Done",
+        "id": "modals.onboarding.linktopitaccount.error.done"
+      }
+    ],
+    "path": "src/modals/Onboarding/LinkToPitAccount/template.error.json"
+  },
+  {
+    "descriptors": [
+      {
+        "defaultMessage": "Waiting for account link",
+        "id": "modals.onboarding.linktopitaccount.loading.waiting"
+      },
+      {
+        "defaultMessage": "If a new browser tab did not open, try clicking the button below.",
+        "id": "modals.onboarding.linktopitaccount.loading.waitingbody"
+      },
+      {
+        "defaultMessage": "Open The PIT",
+        "id": "modals.onboarding.linktopitaccount.loading.openhere"
+      },
+      {
+        "defaultMessage": "Taking you to The PIT",
+        "id": "modals.onboarding.linktopitaccount.loading.title"
+      },
+      {
+        "defaultMessage": "A new browser tab will open shortly where you can complete accounting linking.",
+        "id": "modals.onboarding.linktopitaccount.loading.subtitle"
+      }
+    ],
+    "path": "src/modals/Onboarding/LinkToPitAccount/template.loading.json"
+  },
+  {
+    "descriptors": [
+      {
+        "defaultMessage": "The only Exchange that connects to your Wallet.",
+        "id": "modals.onboarding.linktopitaccount.na.subtitle"
+      },
+      {
+        "defaultMessage": "Lightning Fast Trades",
+        "id": "modals.onboarding.linktopitaccount.na.left.point1"
+      },
+      {
+        "defaultMessage": "Liquid & Reliable",
+        "id": "modals.onboarding.linktopitaccount.na.left.point2"
+      },
+      {
+        "defaultMessage": "Built by Blockchain.com",
+        "id": "modals.onboarding.linktopitaccount.na.left.point3"
+      },
+      {
+        "defaultMessage": "Low Fees",
+        "id": "modals.onboarding.linktopitaccount.na.left.point4"
+      },
+      {
+        "defaultMessage": "The PIT will be able to:",
+        "id": "modals.onboarding.linktopitaccount.na.right.totitle"
+      },
+      {
+        "defaultMessage": "Share your Gold & Silver Level status",
+        "id": "modals.onboarding.linktopitaccount.na.right.topoint1"
+      },
+      {
+        "defaultMessage": "Exchange crypto addresses so you dont have to copy and paste",
+        "id": "modals.onboarding.linktopitaccount.na.right.topoint2"
+      },
+      {
+        "defaultMessage": "The PIT will not be able to:",
+        "id": "modals.onboarding.linktopitaccount.na.right.nottitle"
+      },
+      {
+        "defaultMessage": "View you wallet password",
+        "id": "modals.onboarding.linktopitaccount.na.right.notpoint1"
+      },
+      {
+        "defaultMessage": "Connect Now",
+        "id": "modals.onboarding.linktopitaccount.na.connectnow"
+      },
+      {
+        "defaultMessage": "A verified email address is required to connect your wallet to The PIT.",
+        "id": "modals.onboarding.linktopitaccount.na.right.verifyemailrequired"
+      },
+      {
+        "defaultMessage": "Please verify your email address to continue with the signup process.",
+        "id": "modals.onboarding.linktopitaccount.na.right.checkemail"
+      },
+      {
+        "defaultMessage": "Resend Email",
+        "id": "modals.onboarding.linktopitaccount.na.resendemail"
+      }
+    ],
+    "path": "src/modals/Onboarding/LinkToPitAccount/template.notasked.json"
+  },
+  {
+    "descriptors": [
+      {
+        "defaultMessage": "Success!",
+        "id": "modals.onboarding.linktopitaccount.success.title"
+      },
+      {
+        "defaultMessage": "Your Blockchain Wallet is now connected to The PIT!",
+        "id": "modals.onboarding.linktopitaccount.success.subtitle"
+      },
+      {
+        "defaultMessage": "Done",
+        "id": "modals.onboarding.linktopitaccount.success.done"
+      }
+    ],
+    "path": "src/modals/Onboarding/LinkToPitAccount/template.success.json"
   },
   {
     "descriptors": [
@@ -6784,8 +6921,8 @@
         "id": "modals.sendxlm.firststep.txmemo"
       },
       {
-        "defaultMessage": "Sending XLM to an exchange often requires adding a memo. Be sure to add a memo if required.",
-        "id": "modals.sendxlm.firststep.sendtoexchange"
+        "defaultMessage": "Sending XLM to an exchange often requires adding a memo. Failing to include a required memo may result in a loss of funds!",
+        "id": "modals.sendxlm.firststep.sendtoexchange2"
       },
       {
         "defaultMessage": "Learn More",
@@ -6937,32 +7074,32 @@
         "id": "modals.xlmairdropwelcome.verified.title"
       },
       {
-        "defaultMessage": "Hang tight, your XLM is on its way.",
-        "id": "modals.xlmairdropwelcome.verified.subtitle"
+        "defaultMessage": "If you are eligible for the airdrop we’ll notify you once it’s ready! Thanks for you patience",
+        "id": "modals.xlmairdropwelcome.verified.subtitle2"
       },
       {
         "defaultMessage": "View Stellar Wallet",
         "id": "modals.xlmairdropwelcome.verified.seewallet"
       },
       {
-        "defaultMessage": "Thank you for completing your Identity Verification",
-        "id": "modals.xlmairdropwelcome.underreview.title"
+        "defaultMessage": "Thanks for Verifying",
+        "id": "modals.xlmairdropwelcome.underreview.title2"
       },
       {
-        "defaultMessage": "Your application is still under review. Once verified, you will be eligible to receive your XLM.",
-        "id": "modals.xlmairdropwelcome.underreview.subtitle2"
+        "defaultMessage": "Your application is still under review. Once verified we’ll notify you if you are eligible for the Airdrop.",
+        "id": "modals.xlmairdropwelcome.underreview.subtitle3"
       },
       {
         "defaultMessage": "View Stellar Wallet",
         "id": "modals.xlmairdropwelcome.underreview.seewallet"
       },
       {
-        "defaultMessage": "Finish Identity Verification",
-        "id": "modals.xlmairdropwelcome.inprogress.title"
+        "defaultMessage": "Go for Gold",
+        "id": "modals.xlmairdropwelcome.inprogress.title2"
       },
       {
-        "defaultMessage": "Complete your Identity Verification to claim your XLM. Once verified, you'll be able to use our next generation trading product, Swap.",
-        "id": "modals.xlmairdropwelcome.inprogress.subtitle"
+        "defaultMessage": "Complete your profile to start instantly trading crypto from the security of your wallet and become eligible for our Airdrop Program.",
+        "id": "modals.xlmairdropwelcome.inprogress.subtitle2"
       },
       {
         "defaultMessage": "Complete Now",
@@ -6973,8 +7110,8 @@
         "id": "modals.xlmairdropwelcome.newuser.title"
       },
       {
-        "defaultMessage": "Verify your identity to claim your XLM. It only takes a few minutes. Once verified, you'll be able to use our next generation trading product, Swap.",
-        "id": "modals.xlmairdropwelcome.newuser.subtitle"
+        "defaultMessage": "Complete your profile to start instantly trading crypto from the security of your wallet and become eligible for our Airdrop Program.",
+        "id": "modals.xlmairdropwelcome.newuser.subtitle2"
       },
       {
         "defaultMessage": "Begin Now",
@@ -7550,216 +7687,19 @@
   {
     "descriptors": [
       {
-        "defaultMessage": "Buy Limit: {buyLimit}",
-        "id": "scenes.buysell.sfoxcheckout.content.jumio.buylimit"
+        "defaultMessage": "Sell Unavailable",
+        "id": "scenes.buysell.coinify.sellunavailable.header"
       },
       {
-        "defaultMessage": "Sell Limit: {sellLimit}",
-        "id": "scenes.buysell.sfoxcheckout.content.jumio.selllimit"
+        "defaultMessage": "Unfortunately Sell is not currently available in your state. We're working hard to bring it back as soon as possible.",
+        "id": "scenes.buysell.coinify.sellunavailable.reason"
       },
       {
-        "defaultMessage": "Success! Identity Verification Complete",
-        "id": "scenes.buysell.sfoxcheckout.content.jumio.title.completed"
-      },
-      {
-        "defaultMessage": "Identity Verification Pending",
-        "id": "scenes.buysell.sfoxcheckout.content.jumio.title.pending"
-      },
-      {
-        "defaultMessage": "Identity Verification Failed",
-        "id": "scenes.buysell.sfoxcheckout.content.jumio.title.failed"
-      },
-      {
-        "defaultMessage": "You're almost there! The uploaded information is being reviewed. This should just take a few minutes.",
-        "id": "scenes.buysell.sfoxcheckout.content.jumio.body.pending.awaitingjumio"
-      },
-      {
-        "defaultMessage": "Your identity verification is incomplete. Please continue to follow the steps to complete the process.",
-        "id": "scenes.buysell.sfoxcheckout.content.jumio.body.pending"
-      },
-      {
-        "defaultMessage": "The system has failed to verify your identity. Contact support@sfox.com for more information.",
-        "id": "scenes.buysell.sfoxcheckout.content.jumio.body.failed"
-      },
-      {
-        "defaultMessage": "Refresh Status",
-        "id": "scenes.buysell.sfoxcheckout.content.jumio.button.refresh"
-      },
-      {
-        "defaultMessage": "Complete Verification",
-        "id": "scenes.buysell.sfoxcheckout.content.jumio.button.complete_verification"
-      },
-      {
-        "defaultMessage": "Try Again",
-        "id": "scenes.buysell.sfoxcheckout.content.jumio.button.tryagain"
+        "defaultMessage": "Learn More",
+        "id": "scenes.buysell.coinify.sellunavailable.learnmore"
       }
     ],
-    "path": "src/scenes/BuySell/SfoxCheckout/Content/JumioStatus/template.success.json"
-  },
-  {
-    "descriptors": [
-      {
-        "defaultMessage": "I want to buy",
-        "id": "buy.sfoxcheckout.outputmethod.title.buy"
-      },
-      {
-        "defaultMessage": "I want to sell",
-        "id": "buy.sfoxcheckout.title.sell"
-      },
-      {
-        "defaultMessage": "I will pay with",
-        "id": "buy.sfoxcheckout.inputmethod.title.buywith"
-      },
-      {
-        "defaultMessage": "I will receive funds into",
-        "id": "buy.sfoxcheckout.outputmethod.title.sellwith"
-      },
-      {
-        "defaultMessage": "Loading",
-        "id": "buy.sfoxcheckout.loading"
-      },
-      {
-        "defaultMessage": "Amount",
-        "id": "buy.sfoxcheckout.amount"
-      }
-    ],
-    "path": "src/scenes/BuySell/SfoxCheckout/Content/OrderCheckout.json"
-  },
-  {
-    "descriptors": [
-      {
-        "defaultMessage": "What are the fees?",
-        "id": "scenes.buysell.sfoxcheckout.orderreview.helper1.question"
-      },
-      {
-        "defaultMessage": "There is a trading fee that SFOX requires to execute a buy or sell trade. For sell trades specifically, there is an additional transaction fee that goes to network miners in order to send the amount you’re selling to SFOX.",
-        "id": "scenes.buysell.sfoxcheckout.orderreview.helper1.answer"
-      },
-      {
-        "defaultMessage": "How long will it take to get my funds?",
-        "id": "scenes.buysell.sfoxcheckout.orderreview.helper2.question"
-      },
-      {
-        "defaultMessage": "On average, it will take about a week for you to receive your funds from either a buy or sell trade.",
-        "id": "scenes.buysell.sfoxcheckout.orderreview.helper2.answer"
-      },
-      {
-        "defaultMessage": "Can I cancel my trade?",
-        "id": "scenes.buysell.sfoxcheckout.orderreview.helper3.question"
-      },
-      {
-        "defaultMessage": "Once you submit your trade here, it will move into a pending state. With that said, please be sure to verify the information here carefully before submitting. Once pending, your trade cannot be reversed, cancelled or changed.",
-        "id": "scenes.buysell.sfoxcheckout.orderreview.helper3.answer1"
-      },
-      {
-        "defaultMessage": "You're almost there",
-        "id": "buy.sfoxcheckout.almostthere"
-      },
-      {
-        "defaultMessage": "Before we can start processing your order, review the order details below. If everything looks good to you, click submit to complete your order.",
-        "id": "buy.sfoxcheckout.revieworder.subtext"
-      },
-      {
-        "defaultMessage": "Your Connected Account",
-        "id": "buy.sfoxcheckout.connectedaccount"
-      },
-      {
-        "defaultMessage": "Exchange Rate",
-        "id": "buy.sfoxcheckout.exchangerate"
-      },
-      {
-        "defaultMessage": "BTC Amount to Purchase",
-        "id": "buy.sfoxcheckout.orderdetails.amounttopurchase"
-      },
-      {
-        "defaultMessage": "BTC Amount to Sell",
-        "id": "buy.sfoxcheckout.orderdetails.amounttosell"
-      },
-      {
-        "defaultMessage": "Trading Fee",
-        "id": "buy.sfoxcheckout.orderdetails.tradingfee"
-      },
-      {
-        "defaultMessage": "Total Cost",
-        "id": "buy.sfoxcheckout.orderdetails.totalcost"
-      },
-      {
-        "defaultMessage": "Total to be Received",
-        "id": "buy.sfoxcheckout.orderdetails.totaltobereceived"
-      },
-      {
-        "defaultMessage": "Estimated Delivery of Funds",
-        "id": "buy.sfoxcheckout.orderdetails.fundsdelivery"
-      },
-      {
-        "defaultMessage": "Try again",
-        "id": "buy.sfoxcheckout.orderdetails.try_again"
-      }
-    ],
-    "path": "src/scenes/BuySell/SfoxCheckout/Content/OrderReview.json"
-  },
-  {
-    "descriptors": [
-      {
-        "defaultMessage": "I authorize SFOX, Inc. to debit my linked bank account ending in {account} and comply with the SFOX {ToS}.",
-        "id": "scenes.buysell.sfox.orderreview.checkboxtext"
-      },
-      {
-        "defaultMessage": "Submit",
-        "id": "buysell.sfoxcheckout.orderreview.submit"
-      },
-      {
-        "defaultMessage": "Cancel",
-        "id": "buysell.sfoxcheckout.orderreview.cancel"
-      }
-    ],
-    "path": "src/scenes/BuySell/SfoxCheckout/Content/orderReviewForm.json"
-  },
-  {
-    "descriptors": [
-      {
-        "defaultMessage": "Review Order",
-        "id": "buy.sfoxcheckout.revieworder"
-      }
-    ],
-    "path": "src/scenes/BuySell/SfoxCheckout/Content/QuoteInputTemplate.json"
-  },
-  {
-    "descriptors": [
-      {
-        "defaultMessage": "What are the fees?",
-        "id": "scenes.buysell.sfoxcheckout.cyo.helper1.question"
-      },
-      {
-        "defaultMessage": "There is a trading fee that SFOX requires to execute a buy or sell trade. For sell trades specifically, there is an additional transaction fee that goes to network miners in order to send the amount you’re selling to SFOX.",
-        "id": "scenes.buysell.sfoxcheckout.cyo.helper1.answer"
-      },
-      {
-        "defaultMessage": "What is the exchange rate?",
-        "id": "scenes.buysell.sfoxcheckout.cyo.helper2.question"
-      },
-      {
-        "defaultMessage": "These rates are determined by the market, the broader ecosystem of other buyers and sellers. We fetch the most recent exchange rate and guarantee it for 30 seconds. The quote will automatically refresh every 30 seconds until you select ‘Submit’.",
-        "id": "scenes.buysell.sfoxcheckout.cyo.helper2.answer"
-      },
-      {
-        "defaultMessage": "How do I raise my limits?",
-        "id": "scenes.buysell.sfoxcheckout.cyo.helper3.question"
-      },
-      {
-        "defaultMessage": "Daily limits are determined by how much information has been submitted to, and verified by, SFOX— the highest daily limit being $10,000. Keep in mind: your daily buy and sell limits directly impact each other (for example, If your limit is $10,000 and you decide to sell $6,000, you will have a limit to buy $4,000).",
-        "id": "scenes.buysell.sfoxcheckout.cyo.helper3.answer"
-      },
-      {
-        "defaultMessage": "Pending Orders",
-        "id": "scenes.buysell.sfoxcheckout.trades.pending"
-      },
-      {
-        "defaultMessage": "Completed Orders",
-        "id": "scenes.buysell.sfoxcheckout.trades.completed"
-      }
-    ],
-    "path": "src/scenes/BuySell/SfoxCheckout/Content/template.success.json"
+    "path": "src/scenes/BuySell/CoinifyCheckout/Content/Sell/SellUnavailable/index.json"
   },
   {
     "descriptors": [
@@ -7768,12 +7708,8 @@
         "id": "scenes.buysell.selectpartner.header.buy_bitcoin"
       },
       {
-        "defaultMessage": "You can buy & sell Bitcoin (BTC) using your credit card or bank account from your Wallet through our partner Coinify.",
-        "id": "scenes.buysell.selectpartner.subheader_coinify"
-      },
-      {
-        "defaultMessage": "You can buy & sell Bitcoin (BTC) using your linked bank account from your Wallet through our partner SFOX.",
-        "id": "scenes.buysell.selectpartner.subheader_sfox"
+        "defaultMessage": "You can buy & sell Bitcoin (BTC) from your Wallet through our partner Coinify.",
+        "id": "scenes.buysell.selectpartner.subheader_coinify2"
       },
       {
         "defaultMessage": "You can buy & sell Bitcoin (BTC) from your Wallet.",
@@ -8431,6 +8367,52 @@
   {
     "descriptors": [
       {
+        "defaultMessage": "It's time to Level Up to a better crypto exchange.  The first 100,000 traders to sign up will trade free for 30 days.",
+        "id": "scenes.home.thepit.subtitle"
+      },
+      {
+        "defaultMessage": "Learn More",
+        "id": "scenes.home.thepit.learnmore"
+      }
+    ],
+    "path": "src/scenes/Home/ThePit/index.json"
+  },
+  {
+    "descriptors": [
+      {
+        "defaultMessage": "Authorize The PIT to connect to your Blockchain Wallet",
+        "id": "scenes.linkaccount.authorize"
+      },
+      {
+        "defaultMessage": "The PIT will be able to:",
+        "id": "scenes.linkaccount.pit_will_be_able_to"
+      },
+      {
+        "defaultMessage": "Share your Gold or Silver or Level status",
+        "id": "scenes.linkaccount.share_levels"
+      },
+      {
+        "defaultMessage": "Exchange crypto addresses so you don’t have to copy and paste",
+        "id": "scenes.linkaccount.share_addresses"
+      },
+      {
+        "defaultMessage": "The PIT will not be able to:",
+        "id": "scenes.linkaccount.pit_will_not_be_able_to"
+      },
+      {
+        "defaultMessage": "View your Wallet password, recovery phrase, or private keys",
+        "id": "scenes.linkaccount.view_pw"
+      },
+      {
+        "defaultMessage": "Brought to you by Blockchain",
+        "id": "scenes.linkaccount.by_blockchain"
+      }
+    ],
+    "path": "src/scenes/LinkAccount/index.json"
+  },
+  {
+    "descriptors": [
+      {
         "defaultMessage": "Oops. Something went wrong. Click <span class=\"link\">here</span> to refresh.",
         "id": "scenes.lockbox.menu.currencylist.error"
       }
@@ -8865,6 +8847,10 @@
   {
     "descriptors": [
       {
+        "defaultMessage": "Your password is not strong enough",
+        "id": "scenes.register.invalidstrongpassword"
+      },
+      {
         "defaultMessage": "Recover Funds",
         "id": "scenes.recover.secondstep.funds"
       },
@@ -8893,6 +8879,10 @@
   },
   {
     "descriptors": [
+      {
+        "defaultMessage": "Your password is not strong enough",
+        "id": "scenes.register.invalidstrongpassword"
+      },
       {
         "defaultMessage": "Create a Wallet",
         "id": "scenes.register.createawallet"
@@ -9362,6 +9352,10 @@
   },
   {
     "descriptors": [
+      {
+        "defaultMessage": "Your password is not strong enough",
+        "id": "scenes.securitysettings.advanced.walletpassword.invalidstrongpassword"
+      },
       {
         "defaultMessage": "Change",
         "id": "scenes.securitysettings.advanced.walletpassword.settings.change"
@@ -10660,6 +10654,47 @@
   {
     "descriptors": [
       {
+        "defaultMessage": "Level up to our new exchange for unlimited trading in the most desired crypto pairs.",
+        "id": "scenes.thepit.subtitle"
+      },
+      {
+        "defaultMessage": "Fast and Liquid",
+        "id": "scenes.thepit.point1.title"
+      },
+      {
+        "defaultMessage": "We combined an ultra fast matching engine with deep liquidity so you can react quickly and with precision.",
+        "id": "scenes.thepit.point1.subtitle"
+      },
+      {
+        "defaultMessage": "Easy to Use",
+        "id": "scenes.thepit.point2.title"
+      },
+      {
+        "defaultMessage": "No instructional manual required!  The PIT is refreshingly simple, fun, and lightning fast.",
+        "id": "scenes.thepit.point2.subtitle"
+      },
+      {
+        "defaultMessage": "Blockchain Connect",
+        "id": "scenes.thepit.point3.title"
+      },
+      {
+        "defaultMessage": "The only exchange seamlessly integrated with your secure digital wallet.",
+        "id": "scenes.thepit.point3.subtitle"
+      },
+      {
+        "defaultMessage": "Sign Up",
+        "id": "scenes.thepit.signup"
+      },
+      {
+        "defaultMessage": "Learn More",
+        "id": "scenes.thepit.learnmore"
+      }
+    ],
+    "path": "src/scenes/ThePit/template.json"
+  },
+  {
+    "descriptors": [
+      {
         "defaultMessage": "XLM is a token that enables quick, low cost global transactions. Send, receive, and trade XLM from your Wallet today.",
         "id": "scenes.transaction.content.empty.xlm.subtitle2"
       },
@@ -11111,10 +11146,6 @@
       {
         "defaultMessage": "PBKDF2 must be between 1 and 20000",
         "id": "formhelper.invalidpasswordstretchingnumber"
-      },
-      {
-        "defaultMessage": "Your password is not strong enough",
-        "id": "formhelper.invalidstrongpassword"
       },
       {
         "defaultMessage": "Invalid Wallet ID",

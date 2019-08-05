@@ -10,10 +10,6 @@ import { isGuid, isEmail } from '../../services/ValidationHelper'
 class LoginContainer extends React.PureComponent {
   state = { useCode: true }
 
-  componentDidMount () {
-    this.props.loginActions.initialized()
-  }
-
   componentWillUnmount () {
     this.props.formActions.reset('login')
   }
@@ -55,7 +51,7 @@ class LoginContainer extends React.PureComponent {
     const guid = (isGuid(path) && path) || lastGuid
 
     return guid ? (
-      <Login {...this.props} initialValues={{ guid }} {...loginProps} />
+      <Login {...this.props} {...loginProps} initialValues={{ guid }} />
     ) : (
       <Login {...this.props} {...loginProps} />
     )
@@ -69,6 +65,7 @@ const mapStateToProps = state => ({
   formMeta: getFormMeta('login')(state),
   authType: selectors.auth.getAuthType(state),
   lastGuid: selectors.cache.getLastGuid(state),
+  goals: selectors.goals.getGoals(state),
   data: selectors.auth.getLogin(state),
   isGuidValid: isGuid(formValueSelector('login')(state, 'guid')),
   isGuidEmailAddress: isEmail(formValueSelector('login')(state, 'guid'))
@@ -78,7 +75,6 @@ const mapDispatchToProps = dispatch => ({
   authActions: bindActionCreators(actions.auth, dispatch),
   alertActions: bindActionCreators(actions.alerts, dispatch),
   formActions: bindActionCreators(actions.form, dispatch),
-  loginActions: bindActionCreators(actions.components.login, dispatch),
   modalActions: bindActionCreators(actions.modals, dispatch)
 })
 

@@ -14,7 +14,11 @@ import {
   ShowBtcPrivateKey,
   VerifyMessage
 } from './Btc'
-import { CoinifyDeleteBank, CoinifyTradeDetails } from './Coinify'
+import {
+  CoinifyBuyViaCard,
+  CoinifyDeleteBank,
+  CoinifyTradeDetails
+} from './Coinify'
 import {
   PaxWelcome,
   RequestEth,
@@ -46,7 +50,8 @@ import {
   AirdropClaim,
   AirdropSuccess,
   CoinifyUpgrade,
-  LinkAccount,
+  LinkFromPitAccount,
+  LinkToPitAccount,
   SwapGetStarted,
   UpgradeForAirdrop,
   Welcome
@@ -84,6 +89,7 @@ const Modals = () => (
     <AirdropClaim />
     <AirdropSuccess />
     <AutoDisconnection />
+    <CoinifyBuyViaCard />
     <CoinifyDeleteBank />
     <CoinifyTradeDetails />
     <CoinifyUpgrade />
@@ -102,7 +108,8 @@ const Modals = () => (
     <LockboxFirmware disableOutsideClose />
     <LockboxSetup disableOutsideClose />
     <LockboxShowXPubs />
-    <LinkAccount />
+    <LinkFromPitAccount disableOutsideClose />
+    <LinkToPitAccount disableOutsideClose />
     <MobileNumberChange />
     <MobileNumberVerify />
     <Onfido />

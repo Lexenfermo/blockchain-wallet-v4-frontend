@@ -1,9 +1,8 @@
 import { put, call, select } from 'redux-saga/effects'
 import profileSagas from 'data/modules/profile/sagas'
-import * as actions from '../../actions.js'
-import * as selectors from '../../selectors.js'
+import * as actions from '../../actions'
+import * as selectors from '../../selectors'
 import * as C from 'services/AlertService'
-import { addLanguageToUrl } from 'services/LanguageService'
 import {
   askSecondPasswordEnhancer,
   promptForSecondPassword
@@ -19,7 +18,7 @@ export const ipRestrictionError =
 
 export const logLocation = 'modules/settings/sagas'
 
-export default ({ api, coreSagas }) => {
+export default ({ api, coreSagas, securityModule }) => {
   const { syncUserWithWallet } = profileSagas({
     api,
     coreSagas
@@ -46,7 +45,8 @@ export default ({ api, coreSagas }) => {
   }
 
   const recoverySaga = function * ({ password }) {
-    const getMnemonic = s => selectors.core.wallet.getMnemonic(s, password)
+    const getMnemonic = s =>
+      selectors.core.wallet.getMnemonic(securityModule, s, password)
     try {
       const mnemonicT = yield select(getMnemonic)
       const mnemonic = yield call(() => taskToPromise(mnemonicT))
@@ -134,17 +134,6 @@ export default ({ api, coreSagas }) => {
       if (propEq('type', 'UNKNOWN_USER', e)) return
       yield put(actions.alerts.displayError(C.MOBILE_VERIFY_ERROR))
       yield put(actions.modules.settings.verifyMobileFailure())
-    }
-  }
-
-  // We prefer local storage language and update this in background for
-  // things like emails and external communication with the user
-  const updateLanguage = function * (action) {
-    try {
-      yield call(coreSagas.settings.setLanguage, action.payload)
-      addLanguageToUrl(action.payload.language)
-    } catch (e) {
-      yield put(actions.logs.logErrorMessage(logLocation, 'updateLanguage', e))
     }
   }
 
@@ -309,9 +298,9 @@ export default ({ api, coreSagas }) => {
 
   const showBtcPrivateKey = function * (action) {
     const { addr } = action.payload
-    const password = yield call(promptForSecondPassword)
-    const wallet = yield select(selectors.core.wallet.getWallet)
     try {
+      const password = yield call(promptForSecondPassword)
+      const wallet = yield select(selectors.core.wallet.getWallet)
       const privT = Types.Wallet.getPrivateKeyForAddress(wallet, password, addr)
       const priv = yield call(() => taskToPromise(privT))
       yield put(actions.modules.settings.addShownBtcPrivateKey(priv))
@@ -374,7 +363,6 @@ export default ({ api, coreSagas }) => {
     updateMobile,
     resendMobile,
     verifyMobile,
-    updateLanguage,
     updateCurrency,
     updateAutoLogout,
     updateLoggingLevel,

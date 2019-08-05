@@ -3,7 +3,7 @@ export default ({
   nabuUrl,
   get,
   post,
-  put,
+  authorizedPost,
   authorizedPut,
   authorizedGet
 }) => {
@@ -50,6 +50,25 @@ export default ({
     })
   }
 
+  const createLinkAccountId = () => {
+    return authorizedPut({
+      url: nabuUrl,
+      endPoint: '/users/link-account/create/start',
+      contentType: 'application/json'
+    })
+  }
+
+  const shareWalletDepositAddresses = addresses => {
+    return authorizedPost({
+      url: nabuUrl,
+      endPoint: '/users/deposit/addresses',
+      contentType: 'application/json',
+      data: {
+        addresses
+      }
+    })
+  }
+
   const registerUserCampaign = (campaignName, campaignData, newUser = false) =>
     authorizedPut({
       url: nabuUrl,
@@ -83,7 +102,7 @@ export default ({
       endPoint: `/auth?userId=${userId}`,
       contentType: 'application/json',
       headers: {
-        'X-DEVICE-ID': 'deviceId',
+        'X-DEVICE-ID': null,
         'X-CLIENT-TYPE': 'WEB',
         'x-app-version': '6.11.1',
         'X-WALLET-GUID': walletGuid,
@@ -126,6 +145,7 @@ export default ({
   return {
     checkUserExistence,
     createUser,
+    createLinkAccountId,
     generateRetailToken,
     generateSession,
     getUser,
@@ -134,6 +154,7 @@ export default ({
     registerUserCampaign,
     syncUserWithWallet,
     updateUser,
+    shareWalletDepositAddresses,
     updateUserAddress
   }
 }

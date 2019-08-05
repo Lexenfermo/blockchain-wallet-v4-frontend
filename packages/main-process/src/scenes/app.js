@@ -2,7 +2,6 @@ import React from 'react'
 import { Redirect, Switch } from 'react-router-dom'
 import { connect, Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
-import { PersistGate } from 'redux-persist/integration/react'
 import { map, values } from 'ramda'
 import { createGlobalStyle } from 'styled-components'
 
@@ -10,7 +9,7 @@ import { selectors } from 'data'
 import { IconGlobalStyles, FontGlobalStyles } from 'blockchain-info-components'
 import { MediaContextProvider } from 'providers/MatchMediaProvider'
 import AnalyticsTracker from 'providers/AnalyticsTracker'
-import ConnectedIntlProvider from 'providers/ConnectedIntlProvider'
+import TranslationsProvider from 'providers/TranslationsProvider'
 import PublicLayout from 'layouts/Public'
 import ThemeProvider from 'providers/ThemeProvider'
 import WalletLayout from 'layouts/Wallet'
@@ -36,6 +35,7 @@ import Reminder from './Reminder'
 import Reset2FA from './Reset2FA'
 import Reset2FAToken from './Reset2FAToken'
 import SecurityCenter from './SecurityCenter'
+import ThePit from './ThePit'
 import Transactions from './Transactions'
 import UploadDocuments from './UploadDocuments'
 import UploadDocumentsSuccess from './UploadDocuments/Success'
@@ -60,15 +60,12 @@ class App extends React.PureComponent {
     const {
       store,
       history,
-      messages,
-      persistor,
       isAuthenticated,
       supportedCoins
     } = this.props
     return (
       <Provider store={store}>
-        <ConnectedIntlProvider messages={messages}>
-          <PersistGate loading={null} persistor={persistor}>
+        <TranslationsProvider>
             <ThemeProvider>
               <MediaContextProvider>
                 <ConnectedRouter history={history}>
@@ -117,6 +114,7 @@ class App extends React.PureComponent {
                       component={ExchangeProfile}
                     />
                     <WalletLayout path='/swap' component={Exchange} exact />
+                    <WalletLayout path='/thepit' component={ThePit} />
                     <WalletLayout
                       path='/security-center'
                       component={SecurityCenter}
@@ -165,8 +163,7 @@ class App extends React.PureComponent {
                 <GlobalStyle />
               </MediaContextProvider>
             </ThemeProvider>
-          </PersistGate>
-        </ConnectedIntlProvider>
+        </TranslationsProvider>
       </Provider>
     )
   }

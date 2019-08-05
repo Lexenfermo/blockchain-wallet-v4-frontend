@@ -37,7 +37,7 @@ const taskToPromise = t =>
       .chain().amount(myAmount).done()
 */
 
-export default ({ api }) => {
+export default ({ api, securityModule }) => {
   const settingsSagas = settingsSagaFactory({ api })
   const selectIndex = function * (from) {
     const appState = yield select(identity)
@@ -60,23 +60,36 @@ export default ({ api }) => {
   }
 
   const calculateSignature = function * (
+    securityModule,
     network,
     password,
     transport,
     scrambleKey,
-    raw,
-    isErc20
+    p
   ) {
-    switch (raw.fromType) {
+    switch (p.raw.fromType) {
       case ADDRESS_TYPES.ACCOUNT: {
+        let sign
         const appState = yield select(identity)
-        const mnemonicT = S.wallet.getMnemonic(appState, password)
+        const mnemonicT = S.wallet.getMnemonic(
+          securityModule,
+          appState,
+          password
+        )
         const mnemonic = yield call(() => taskToPromise(mnemonicT))
-        const sign = data =>
-          isErc20
-            ? taskToPromise(eth.signErc20(network, mnemonic, data))
-            : taskToPromise(eth.sign(network, mnemonic, data))
-        return yield call(sign, raw)
+        if (p.isErc20) {
+          const contractAddress = (yield select(
+            S.kvStore.eth.getErc20ContractAddr,
+            toLower(p.coin)
+          )).getOrFail('missing_contract_addr')
+          sign = data =>
+            taskToPromise(
+              eth.signErc20(network, mnemonic, data, contractAddress)
+            )
+        } else {
+          sign = data => taskToPromise(eth.sign(network, mnemonic, data))
+        }
+        return yield call(sign, p.raw)
       }
       case ADDRESS_TYPES.LOCKBOX: {
         return yield call(
@@ -84,7 +97,7 @@ export default ({ api }) => {
           network,
           transport,
           scrambleKey,
-          raw
+          p.raw
         )
       }
     }
@@ -276,8 +289,7 @@ export default ({ api }) => {
             password,
             transport,
             scrambleKey,
-            p.raw,
-            p.isErc20
+            p
           )
           return makePayment(mergeRight(p, { signed }))
         } catch (e) {
@@ -288,7 +300,11 @@ export default ({ api }) => {
       * signLegacy (password) {
         try {
           const appState = yield select(identity)
-          const seedHexT = S.wallet.getSeedHex(appState, password)
+          const seedHexT = S.wallet.getSeedHex(
+            securityModule,
+            appState,
+            password
+          )
           const seedHex = yield call(() => taskToPromise(seedHexT))
           const signLegacy = data =>
             taskToPromise(eth.signLegacy(network, seedHex, data))

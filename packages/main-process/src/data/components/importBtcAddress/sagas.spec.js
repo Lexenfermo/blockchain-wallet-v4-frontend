@@ -7,9 +7,11 @@ import Bitcoin from 'bitcoinjs-lib'
 const api = {}
 const networks = { btc: Bitcoin.networks['bitcoin'] }
 const coreSagas = coreSagasFactory({ api })
+const securityModule = {}
 const { importLegacyAddress, importBtcAddressSubmitClicked } = sagas({
   api,
   coreSagas,
+  imports: { securityModule },
   networks
 })
 const logLocation = 'components/importBtcAddress/sagas'
@@ -30,6 +32,7 @@ describe('importBtcAddress sagas', () => {
           })
           .call(
             importLegacyAddress,
+            securityModule,
             '1LM9wuwviAApr9y2nUrWaBadEZXJucsxLB',
             'L1srees8FHP8v2yAv1b5JuZfCvqhVf37JUp5oHpFj1QtnPRyNRaB',
             null,
@@ -65,6 +68,7 @@ describe('importBtcAddress sagas', () => {
           .next()
           .call(
             importLegacyAddress,
+            securityModule,
             undefined,
             '6PYKXJ9yisUdA8Qxv3H1bzrsxhMABYNgLTKvpvEFqMRYA1oyAmn9gvzF3W',
             null,
